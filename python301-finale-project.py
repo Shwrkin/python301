@@ -9,7 +9,8 @@ class BankUser():
         try:
             open(f'{name}.txt', 'x').close()
         except FileExistsError:
-            pass
+            with open(self.file, 'w') as f:
+                f.write('')
 
     # Makes the user Choose which action to do and with how much money
     def bankAction(self):
@@ -38,6 +39,9 @@ class BankUser():
                     else:
                         with open(self.file, 'a') as file:
                             file.write(f'+{amount}\n')
+
+            elif action == 'q':
+                action = True
 
             else:
                 print('Please choose one of the options')
